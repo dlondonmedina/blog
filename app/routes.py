@@ -7,7 +7,6 @@ from app.models import User, Post
 @app.route('/')
 def index():
    title = 'Fancy-Pants Blog'
-   
    return render_template('index.html', title=title)
 
 

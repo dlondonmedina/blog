@@ -167,7 +167,7 @@ class TestBlog(unittest.TestCase):
    ##########################
 
    def test_blog_not_logged_in(self):
-      resp = self.client.post('/post', data=dict(title="bad", slug="bad", text="bad"), follow_redirects=True)
+      resp = self.client.post('/post', data=dict(post_title="bad", slug="bad", text="bad"), follow_redirects=True)
       self.assertIn(b'You must be logged in', resp.data)
    
    def test_blog_logged_in(self):

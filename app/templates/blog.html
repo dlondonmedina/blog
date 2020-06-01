@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Blog Posts</h1>
-{% for post in data.posts %}
+{% for post in data %}
 <div class="blog-post">
    <h2>{{ post.title }}</h2><br>
-   <h3>{{ post.author }}</h3>
-   <p>{{ post.text }}</p>
+   <h3>{{ post.slug }}</h3>
+   <h3>{{ post.author.first_name }} {{ post.author.last_name }}</h3>
+   <p>{{ post.body }}</p>
+   <p>{{ post.created }}</p>
 </div>
 {% endfor %}
 

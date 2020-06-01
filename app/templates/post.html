@@ -1,17 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if data.post_title %}
-<div>
-   <h2>{{ data.post_title }}</h2>
-   <h3>{{ data.author }}</h3>
-   <p>{{ data.text }}</p>
-</div>
-{% endif %}
+<h2>Create a new post!</h2>
 <form method="POST">
    {{ form.hidden_tag() }}
-   {{ form.post_title.label }} {{ form.post_title() }}
-   {{ form.author.label }} {{ form.author() }}
-   {{ form.text.label }} {{ form.text() }}
-   {{ form.submit.label }} {{ form.submit() }}
+   {{ form.post_title.label }} <br> {{ form.post_title() }} <br>
+   {{ form.slug.label }} <br> {{ form.slug() }} <br>
+   {{ form.text.label }} <br> {{ form.text() }} <br>
+   {{ form.submit.label }} <br> {{ form.submit() }} <br>
 </form>
 {% endblock %}

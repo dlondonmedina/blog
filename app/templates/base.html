@@ -3,14 +3,30 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>{{ data.title }}</title>
+   <title>{{ title }}</title>
 </head>
 <body>
    <ul>
-      {% for item in data.menu %}
-      <li class="menu-item"><a href="{{ item.link }}">{{ item.text }}</a></li>
+      <li class="menu-item"><a href="/about">About</a></li>
+      <li class="menu-item"><a href="/cv">CV</a></li>
+      <li class="menu-item"><a href="{{ url_for('blog') }}">Blog</a></li>
+      {% if current_user.is_anonymous %}
+      <li class="menu-item"><a href="{{ url_for('login') }}">Login</a></li>
+      <li class="menu-item"><a href="{{ url_for('register') }}">Register</a></li>
+      {% else %}
+      <li class="menu-item"><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% endif %}
+   </ul>
+   <hr>
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+   <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
       {% endfor %}
    </ul>
+   {% endif %}
+   {% endwith %}
    {% block content %} {% endblock %}
 </body>
 </html>
